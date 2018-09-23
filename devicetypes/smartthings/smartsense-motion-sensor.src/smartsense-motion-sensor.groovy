@@ -40,6 +40,7 @@ metadata {
 		fingerprint inClusters: "0000,0001,0003,0020,0400,0500,0B05", outClusters: "0019", manufacturer: "Bosch", model: "RFPR-ZB", deviceJoinName: "Bosch Motion Sensor"
 		fingerprint inClusters: "0000,0001,0003,000F,0020,0402,0500", outClusters: "0019", manufacturer: "Bosch", model: "RFDL-ZB-MS", deviceJoinName: "Bosch Motion Sensor"
 		fingerprint inClusters: "0000,0001,0003,0020,0402,0500", outClusters: "0019", manufacturer: "Samjin", model: "motion", deviceJoinName: "Motion Sensor"
+		fingerprint inClusters: "0000,0001,0003,0020,0402,0500,0B05", outClusters: "0019", manufacturer: "Ecolink", model: "PIRZB1-ECO", deviceJoinName: "Ecolink Motion Detector"
 	}
 
 	simulator {
@@ -307,7 +308,7 @@ def configure() {
 	}
 	configCmds += zigbee.temperatureConfig(30, 300)
 
-	return refresh() + configCmds // send refresh cmds as part of config
+	return refresh() + configCmds + refresh() // send refresh cmds as part of config
 }
 
 private shouldUseOldBatteryReporting() {
